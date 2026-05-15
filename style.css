@@ -1,0 +1,568 @@
+/* =====================================================
+   PORTFOLIO 2026 — style.css
+   Fonts: League Spartan (main) · Glacial Indifference (secondary)
+   ===================================================== */
+
+/* ── Reset ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: #e8e8e8;
+}
+
+/* =====================================================
+   PAGE WRAPPER
+   ===================================================== */
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  max-width: 840px;
+  gap: 0;
+  margin: 0 auto;
+}
+
+/* =====================================================
+   SECTION 1 — HERO GRID (NEW)
+   ===================================================== */
+.hero-grid-section {
+  position: relative;
+  width: 100%;
+  min-height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Absolutely prevents icons from spilling out */
+  /* background-color: #ffffff; Removed beige tint and lines - now solid white */
+}
+
+/* This wrapper binds the icons and text together tightly */
+.hero-content-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 550px; /* Constraining width keeps icons tight */
+  min-height: 350px;
+}
+
+/* ── Main Content (Portfolio title) ── */
+.hero-grid-section .main-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-grid-section .title-wrap {
+  display: flex;
+  align-items: flex-start;
+  line-height: 1;
+}
+
+.hero-grid-section .portfolio {
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 900;
+  font-size: 85px;
+  color: #111111; /* Changed to Black */
+  letter-spacing: -2px;
+  text-transform: uppercase;
+}
+
+.hero-grid-section .year {
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 800;
+  font-size: 22px;
+  color: #111111;
+  margin-top: 5px;
+  margin-left: 8px;
+}
+
+.hero-grid-section .subtitle {
+  font-family: 'Glacial Indifference', 'Century Gothic', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: #eb2f45; /* Red color from your reference */
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-top: 15px;
+  max-width: 300px;
+  line-height: 1.5;
+}
+
+/* ── Tightly Clustered Floating Icons ── */
+.icon {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+}
+
+.icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.icon-pr {
+  width: 45px; height: 45px;
+  top: 10%; left: 15%;
+  --rot: -12deg;
+  --base-opacity: 0.8;
+  animation: floatUpDown 3.5s ease-in-out infinite;
+}
+
+.icon-ae {
+  width: 48px; height: 48px;
+  top: -5%; right: 10%;
+  --rot: 10deg;
+  --base-opacity: 0.8;
+  animation: floatUpDown 4s ease-in-out infinite;
+  animation-delay: 0.6s;
+}
+
+.icon-ps {
+  width: 52px; height: 52px;
+  bottom: 15%; left: -5%;
+  --rot: -8deg;
+  --base-opacity: 0.85;
+  animation: floatUpDown 3.2s ease-in-out infinite;
+  animation-delay: 1.2s;
+}
+
+.icon-ai {
+  width: 44px; height: 44px;
+  bottom: 5%; left: 35%;
+  --rot: 5deg;
+  --base-opacity: 0.8;
+  animation: floatUpDown 4.5s ease-in-out infinite;
+  animation-delay: 0.4s;
+}
+
+.icon-gpt {
+  width: 55px; height: 55px;
+  bottom: 0%; right: -5%;
+  --rot: 15deg;
+  --base-opacity: 0.75;
+  animation: floatUpDown 3.8s ease-in-out infinite;
+  animation-delay: 1.8s;
+}
+
+/* Float Animation */
+@keyframes floatUpDown {
+  0%   { transform: translateY(0px)   rotate(var(--rot)); opacity: var(--base-opacity); filter: blur(0px); }
+  50%  { transform: translateY(-10px) rotate(calc(var(--rot) + 5deg)); opacity: calc(var(--base-opacity) + 0.15); filter: blur(1px); }
+  100% { transform: translateY(0px)   rotate(var(--rot)); opacity: var(--base-opacity); filter: blur(0px); }
+}
+
+/* ── Responsive Hero ── */
+@media (max-width: 600px) {
+  .hero-grid-section {
+    min-height: 400px;
+  }
+  
+  .hero-content-wrapper {
+    max-width: 320px; /* Pulls icons in even tighter on small screens */
+    min-height: 200px;
+  }
+
+  .hero-grid-section .portfolio { font-size: 55px; }
+  .hero-grid-section .year { font-size: 16px; margin-top: 3px; }
+  .hero-grid-section .subtitle { font-size: 11px; letter-spacing: 2px; }
+
+  /* Scale down icons for mobile */
+  .icon-pr { width: 35px; height: 35px; top: 5%; left: 10%; }
+  .icon-ae { width: 38px; height: 38px; top: -10%; right: 5%; }
+  .icon-ps { width: 42px; height: 42px; bottom: 10%; left: -5%; }
+  .icon-ai { width: 34px; height: 34px; bottom: 0%; left: 30%; }
+  .icon-gpt{ width: 45px; height: 45px; bottom: -5%; right: 0%; }
+}
+
+/* =====================================================
+   SECTION 2 — ABOUT
+   ===================================================== */
+.about-section {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  background: #e8e8e8;
+  padding: 15px 40px 40px 40px; /* Minimal top breathing space */
+  gap: 24px;
+  margin: 0;
+}
+
+/* ── Left: Person Image ── */
+.about-image {
+  flex: 0 0 260px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.about-image img {
+  width: 100%;
+  max-width: 260px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* ── Right: Text ── */
+.about-text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* LEFT ALIGNED FOR DESKTOP */
+  text-align: left;        /* LEFT ALIGNED FOR DESKTOP */
+  gap: 0;
+}
+
+.about-name {
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 900;
+  font-size: 36px;
+  color: #1a1a1a;
+  letter-spacing: 2px;
+  margin-bottom: 14px;
+  padding: 0;
+}
+
+.bio-box {
+  border: none;
+  padding: 0;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.bio-main {
+  font-family: 'Glacial Indifference', 'Century Gothic', sans-serif;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #1a1a1a;
+  line-height: 1.6;
+}
+
+.bio-highlight {
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 700;
+  font-size: 13.5px;
+  letter-spacing: 2px;
+  color: #bf001f;
+  text-transform: uppercase;
+}
+
+.bio-secondary {
+  font-family: 'Glacial Indifference', 'Century Gothic', sans-serif;
+  font-size: 13.5px;
+letter-spacing: 1px;
+  font-weight: 600;
+  color: #1a1a1a;
+  line-height: 1.6;
+}
+
+/* ── Skills ── */
+.skills-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* LEFT ALIGNED FOR DESKTOP */
+  gap: 12px;
+  width: 100%;
+}
+
+.skills-title {
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 900;
+  font-size: 28px;
+  color: #1a1a1a;
+  letter-spacing: 1px;
+}
+
+.skills-icons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start; /* LEFT ALIGNED FOR DESKTOP */
+  gap: 10px;
+}
+
+.skill-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  object-fit: contain;
+}
+
+.skills-progress {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start; /* LEFT ALIGNED FOR DESKTOP */
+}
+
+.progress-item {
+  width: 48px;
+  height: 48px;
+}
+
+.circle-svg {
+  width: 48px;
+  height: 48px;
+  transform: rotate(-90deg);
+}
+
+.circle-bg {
+  fill: none;
+  stroke: #cccccc;
+  stroke-width: 3;
+}
+
+.circle-fill {
+  fill: none;
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.circle-text {
+  fill: #333333;
+  font-family: 'League Spartan', sans-serif;
+  font-size: 7px;
+  font-weight: 700;
+  text-anchor: middle;
+  transform: rotate(90deg);
+  transform-origin: center;
+  dominant-baseline: middle;
+}
+
+.ps-circle   .circle-fill { stroke: #31a8ff; }
+.ai-circle   .circle-fill { stroke: #ff9a00; }
+.ae-circle   .circle-fill { stroke: #9999ff; }
+.pr-circle   .circle-fill { stroke: #9999ff; }
+.gpt-circle  .circle-fill { stroke: #555555; }
+.star-circle .circle-fill { stroke: #888888; }
+
+/* ── Responsive About ── */
+@media (max-width: 900px) {
+  .about-section { padding: 16px 24px 30px; gap: 16px; }
+  .about-image   { flex: 0 0 200px; }
+  .about-image img { max-width: 200px; }
+  .about-name    { font-size: 28px; }
+  .bio-main,
+  .bio-secondary { font-size: 12.5px; }
+  .skills-title  { font-size: 22px; }
+  .skill-icon    { width: 40px; height: 40px; }
+  .progress-item,
+  .circle-svg    { width: 40px; height: 40px; }
+}
+
+@media (max-width: 600px) {
+  .about-section  { flex-direction: column; align-items: center; padding: 10px 16px 24px; }
+  .about-image    { flex: none; width: 100%; margin-bottom: 20px; margin-top: 0; }
+  .about-image img{ max-width: 220px; }
+  
+  /* CENTERED FOR MOBILE SCREENS */
+  .about-text     { width: 100%; padding: 0; text-align: center; align-items: center; }
+  .about-name     { font-size: 24px; text-align: center; }
+  .bio-main,
+  .bio-secondary  { font-size: 12px; }
+  .bio-highlight  { font-size: 12px; }
+  
+  .skills-block   { align-items: center; }
+  .skills-title   { font-size: 20px; text-align: center; }
+  .skills-icons,
+  .skills-progress{ flex-wrap: wrap; gap: 8px; justify-content: center; }
+  
+  .skill-icon     { width: 38px; height: 38px; }
+  .progress-item,
+  .circle-svg     { width: 38px; height: 38px; }
+}
+
+@media (max-width: 400px) {
+  .about-name { font-size: 20px; }
+}
+
+/* =====================================================
+   BRANDS SECTION
+   ===================================================== */
+.brands-section {
+  width: 100%;
+  background-color: #f8f7f5;
+  padding: 60px 40px 20px 40px;
+  font-family: 'League Spartan', sans-serif;
+}
+
+.brands-section .reveal {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.section-label {
+  color: #e63946;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-size: 25px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.clients-title {
+  font-size: 54px;
+  font-weight: 900;
+  color: #111;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 15px;
+  line-height: 1;
+}
+
+.clients-sub {
+  color: #000000;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.brands-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.brand-cell {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  min-height: 160px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(0,0,0,0.03);
+}
+
+.brand-cell:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+  z-index: 2;
+}
+
+.brand-cell img {
+  max-width: 150px;
+  max-height: 70px;
+  /* object-fit: contain; */
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+/* =====================================================
+   FOOTER SECTION
+   ===================================================== */
+.site-footer {
+  width: 100%;
+  background-color: #f8f7f5;
+  padding: 0 40px 60px 40px;
+  text-align: center;
+  font-family: 'League Spartan', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-divider {
+  width: 100%;
+  max-width: 1000px;
+  border-top: 1px dashed #d0d0d0;
+  margin-bottom: 40px;
+}
+
+.footer-name {
+  font-size: 34px;
+  font-weight: 900;
+  color: #111;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.footer-roles {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  color: #b0b0b0;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 25px;
+}
+
+.footer-roles .dot {
+  color: #e63946;
+  margin: 0 12px;
+  font-size: 18px;
+}
+
+.footer-copy {
+  color: #b0b0b0;
+  font-size: 13px;
+  font-family: 'Glacial Indifference', 'Century Gothic', sans-serif;
+}
+
+/* ── Responsive Brands & Footer ── */
+@media (max-width: 900px) {
+  .brands-section { padding: 50px 24px 20px; }
+  .site-footer { padding: 0 24px 50px; }
+  .clients-title { font-size: 42px; }
+  .brand-cell { min-height: 130px; padding: 30px 16px; }
+  .brand-cell img { max-width: 120px; max-height: 60px; }
+  .footer-name { font-size: 28px; }
+  .footer-roles { font-size: 12px; }
+}
+
+@media (max-width: 700px) {
+  .brands-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-roles { flex-direction: column; gap: 8px; }
+  .footer-roles .dot { display: none; }
+}
+
+@media (max-width: 500px) {
+  .brands-section { padding: 40px 16px 20px; }
+  .site-footer { padding: 0 16px 40px; }
+  .clients-title { font-size: 36px; }
+  .clients-sub { font-size: 12px; letter-spacing: 2px; }
+  .brands-grid { grid-template-columns: 1fr; gap: 15px; }
+  .brand-cell { min-height: 110px; padding: 20px 16px; }
+  .brand-cell img { max-width: 130px; }
+  .footer-name { font-size: 24px; }
+}
